@@ -16,12 +16,6 @@
       "pre-commit": "lint-staged"
     }
   },
-  "lint-staged": {
-    "*.(ts|tsx)": [
-      "npm run lint:write",
-      "git add"
-    ]
-  },
   "dependencies": {
     "husky": "^8.0.3",
     "react": "^18.2.0",
