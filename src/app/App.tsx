@@ -1,14 +1,17 @@
 import '@app/App.tsx';
 import Header from '@features/components/Header';
 import Main from '@features/components/Main';
+import { Component } from 'react';
 
-function App() {
-  return (
-    <>
-      <Header />
-      <Main />
-    </>
-  );
+class App extends Component {
+  render() {
+    return (
+      <>
+        <Header />
+        <Main />
+      </>
+    );
+  }
 }
 
 export default App;
