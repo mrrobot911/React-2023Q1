@@ -1,12 +1,12 @@
+import { Search, SearchChange } from '@features/types/state';
 import { Component } from 'react';
-
-class Header extends Component {
-  state = {
+class Header extends Component<SearchChange, Search> {
+  state: Search = {
     searchValue: '',
   };
   componentDidMount() {
     if (localStorage.getItem('searchTerm')) {
-      this.setState({ searchValue: localStorage.getItem('searchTerm') });
+      this.setState({ searchValue: localStorage.getItem('searchTerm') || '' });
     }
   }
   componentWillUnmount() {
@@ -24,7 +24,7 @@ class Header extends Component {
         <button
           onClick={() => {
             localStorage.setItem('searchTerm', this.state.searchValue);
-            this.setState({ searchValue: '' });
+            this.props.changeSearch(this.state.searchValue);
           }}
         >
           submit

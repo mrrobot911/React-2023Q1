@@ -1,12 +1,11 @@
-import { State } from '@features/types/state';
+import { SearchState, State } from '@features/types/state';
 import { fetchData } from '@shared/api/fetch';
 import { Component } from 'react';
 
-let prevProps = localStorage.getItem('searchTerm') || null;
-const APIUrl = `https://api.pokemontcg.io/v2/cards/?pageSize=20&${
-  prevProps ? 'q=name:' + prevProps + '*' : ''
-}`;
-class Main extends Component {
+class Main extends Component<SearchState, State> {
+  APIUrl = `https://api.pokemontcg.io/v2/cards/?pageSize=20${
+    this.props.search ? '&q=name:' + this.props.search + '*' : ''
+  }`;
   state: State = {
     pokemons: [],
     loading: true,
@@ -18,7 +17,7 @@ class Main extends Component {
   }
 
   fetchPokemons() {
-    fetchData(APIUrl)
+    fetchData(this.APIUrl)
       .then((responseData) => {
         this.setState({
           pokemons: responseData.data,
@@ -32,12 +31,9 @@ class Main extends Component {
         });
       });
   }
-  componentDidUpdate() {
-    if (prevProps !== localStorage.getItem('searchTerm')) {
-      prevProps = localStorage.getItem('searchTerm');
-      this.fetchPokemons();
-    }
-  }
+  // componentDidUpdate() {
+  //   this.fetchPokemons();
+  // }
   render() {
     const { pokemons, loading, error } = this.state;
     if (error) {
