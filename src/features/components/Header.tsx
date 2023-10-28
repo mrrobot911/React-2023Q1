@@ -25,7 +25,7 @@ class Header extends Component<SearchChange, Search> {
             this.props.changeSearch(this.state.searchValue);
           }}
         >
-          submit
+          search
         </button>
       </div>
     );

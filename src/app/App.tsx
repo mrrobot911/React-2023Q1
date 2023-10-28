@@ -5,7 +5,7 @@ import { Component } from 'react';
 
 class App extends Component {
   state = {
-    search: '',
+    search: localStorage.getItem('searchTerm') || '',
   };
   searchChange = (value: string) => {
     this.setState({ search: value });

@@ -1,7 +1,8 @@
 import { SearchState, State } from '@features/types/state';
 import { fetchData } from '@shared/api/fetch';
 import { Component } from 'react';
-import Card from './Card';
+import Card from '@features/components/Card';
+import Spinner from '@shared/ui/Spinner';
 import '@features/components/Main.css';
 
 class Main extends Component<SearchState, State> {
@@ -45,7 +46,7 @@ class Main extends Component<SearchState, State> {
     if (error) {
       return <p>{error.message}</p>;
     } else if (loading) {
-      return <p>Loading...</p>;
+      return <Spinner />;
     } else {
       return (
         <div className="cardList">
