@@ -10,8 +10,13 @@ export default class Card extends Component<Values> {
     return (
       <div className="card">
         <img src={this.props.el.images.small}></img>
-        <div>
-          <p>{this.props.el.name}</p>
+        <div className="cardData">
+          <h3>{this.props.el.name}</h3>
+          <ul>
+            <li>hp: {this.props.el.hp || 'none'}</li>
+            <li>rarity: {this.props.el.rarity || 'none'}</li>
+            <li>evolves from: {this.props.el.evolvesFrom || 'none'}</li>
+          </ul>
         </div>
       </div>
     );

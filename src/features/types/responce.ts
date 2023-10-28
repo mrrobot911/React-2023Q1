@@ -12,7 +12,7 @@ export interface data {
   subtypes: string[];
   hp: string;
   types: string[];
-  evolvesTo: string[];
+  evolvesFrom: string;
   rules: string[];
   attacks: attack[];
   weaknesses: weakness[];
