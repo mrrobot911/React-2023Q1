@@ -1,24 +1,22 @@
 import { Search, SearchChange } from '@features/types/state';
-import { Component, createRef } from 'react';
+import { Component } from 'react';
 class Header extends Component<SearchChange, Search> {
-  inputRef = createRef<HTMLInputElement>();
-
+  state: Search = {
+    searchValue: localStorage.getItem('searchTerm') || '',
+  };
   render() {
     return (
       <>
         <input
           type="search"
-          ref={this.inputRef}
+          value={this.state.searchValue}
           placeholder={'find your pokemon'}
-          onChange={(e) => e.target.value}
+          onChange={(e) => this.setState({ searchValue: e.target.value })}
         />
         <button
           onClick={() => {
-            localStorage.setItem(
-              'searchTerm',
-              this.inputRef.current?.value || ''
-            );
-            this.props.changeSearch(this.inputRef.current?.value || '');
+            localStorage.setItem('searchTerm', this.state.searchValue);
+            this.props.changeSearch(this.state.searchValue);
           }}
         >
           submit

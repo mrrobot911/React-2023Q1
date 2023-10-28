@@ -50,7 +50,10 @@ class Main extends Component<SearchState, State> {
           {pokemons.length > 0 ? (
             pokemons.map((el) => (
               <div key={el.id}>
-                <p>{el.name}</p>
+                <img src={el.images.small}></img>
+                <div>
+                  <p>{el.name}</p>
+                </div>
               </div>
             ))
           ) : (
