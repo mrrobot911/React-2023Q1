@@ -1,0 +1,31 @@
+.header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header input {
+  max-width: 300px;
+  margin-right: 20px;
+  line-height: 18px;
+  padding: 5px 8px;
+  border-radius: 10px;
+  border: 1px solid antiquewhite;
+}
+.header button {
+  border: none;
+  background-color: antiquewhite;
+  color: gray;
+  padding: 10px 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all ease-in-out 0.4s;
+}
+.header button:hover {
+  color: black;
+  background-color: blanchedalmond;
+}
+.header button:active {
+  color: black;
+  background-color: darkorange;
+}

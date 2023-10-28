@@ -1,6 +1,8 @@
 import { SearchState, State } from '@features/types/state';
 import { fetchData } from '@shared/api/fetch';
 import { Component } from 'react';
+import Card from './Card';
+import '@features/components/Main.css';
 
 class Main extends Component<SearchState, State> {
   APIUrl = `https://api.pokemontcg.io/v2/cards/?pageSize=20`;
@@ -46,16 +48,9 @@ class Main extends Component<SearchState, State> {
       return <p>Loading...</p>;
     } else {
       return (
-        <div>
+        <div className="cardList">
           {pokemons.length > 0 ? (
-            pokemons.map((el) => (
-              <div key={el.id}>
-                <img src={el.images.small}></img>
-                <div>
-                  <p>{el.name}</p>
-                </div>
-              </div>
-            ))
+            pokemons.map((el) => <Card key={el.id} el={el} />)
           ) : (
             <p>No search results</p>
           )}
