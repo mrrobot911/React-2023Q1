@@ -3,9 +3,8 @@ import { fetchData } from '@shared/api/fetch';
 import { Component } from 'react';
 
 class Main extends Component<SearchState, State> {
-  APIUrl = `https://api.pokemontcg.io/v2/cards/?pageSize=20${
-    this.props.search ? '&q=name:' + this.props.search + '*' : ''
-  }`;
+  APIUrl = `https://api.pokemontcg.io/v2/cards/?pageSize=20`;
+
   state: State = {
     pokemons: [],
     loading: true,
@@ -15,9 +14,17 @@ class Main extends Component<SearchState, State> {
   componentDidMount() {
     this.fetchPokemons();
   }
-
+  componentDidUpdate(prevProps: Readonly<SearchState>): void {
+    if (prevProps.search !== this.props.search) {
+      this.fetchPokemons();
+    }
+  }
   fetchPokemons() {
-    fetchData(this.APIUrl)
+    this.setState({ loading: true });
+    fetchData(
+      this.APIUrl +
+        `${this.props.search ? '&q=name:' + this.props.search + '*' : ''}`
+    )
       .then((responseData) => {
         this.setState({
           pokemons: responseData.data,
@@ -31,9 +38,6 @@ class Main extends Component<SearchState, State> {
         });
       });
   }
-  // componentDidUpdate() {
-  //   this.fetchPokemons();
-  // }
   render() {
     const { pokemons, loading, error } = this.state;
     if (error) {
@@ -43,11 +47,15 @@ class Main extends Component<SearchState, State> {
     } else {
       return (
         <div>
-          {pokemons.map((el) => (
-            <div key={el.id}>
-              <p>{el.name}</p>
-            </div>
-          ))}
+          {pokemons.length > 0 ? (
+            pokemons.map((el) => (
+              <div key={el.id}>
+                <p>{el.name}</p>
+              </div>
+            ))
+          ) : (
+            <p>No search results</p>
+          )}
         </div>
       );
     }

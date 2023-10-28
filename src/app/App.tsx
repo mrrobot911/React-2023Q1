@@ -8,7 +8,7 @@ class App extends Component {
     search: '',
   };
   searchChange = (value: string) => {
-    this.setState({ serach: value });
+    this.setState({ search: value });
   };
   render() {
     return (
