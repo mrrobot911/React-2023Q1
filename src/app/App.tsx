@@ -2,7 +2,7 @@ import '@app/App.tsx';
 import Header from '@features/components/Header';
 import Main from '@features/components/Main';
 import { Component } from 'react';
-import ErrorBoundary from 'widgets/helpers/Error';
+import ErrorBoundary from '@widgets/helpers/Error';
 
 class App extends Component {
   state = {
