@@ -48,19 +48,19 @@ class Main extends Component<SearchState, State> {
     const { pokemons, loading, error } = this.state;
     if (error) {
       return <p>{error.message}</p>;
-    } else if (loading) {
-      return <Spinner />;
-    } else {
-      return (
-        <div className="cardList">
-          {pokemons.length > 0 ? (
-            pokemons.map((el) => <Card key={el.id} el={el} />)
-          ) : (
-            <p>No search results</p>
-          )}
-        </div>
-      );
     }
+    if (loading) {
+      return <Spinner />;
+    }
+    return (
+      <div className="cardList">
+        {pokemons.length > 0 ? (
+          pokemons.map((el) => <Card key={el.id} el={el} />)
+        ) : (
+          <p>No search results</p>
+        )}
+      </div>
+    );
   }
 }
 export default Main;
