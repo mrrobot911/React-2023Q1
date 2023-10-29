@@ -43,6 +43,21 @@ class Main extends Component<SearchState, State> {
         });
       });
   }
+  errorFetch() {
+    fetchData(this.APIUrl + `${this.props.search + '&q=name:ф*'}`)
+      .then((responseData) => {
+        this.setState({
+          pokemons: responseData.data,
+          loading: false,
+        });
+      })
+      .catch((error) => {
+        this.setState({
+          error,
+          loading: false,
+        });
+      });
+  }
 
   render() {
     const { pokemons, loading, error } = this.state;
@@ -53,12 +68,15 @@ class Main extends Component<SearchState, State> {
       return <Spinner />;
     }
     return (
-      <div className="cardList">
-        {pokemons.length > 0 ? (
-          pokemons.map((el) => <Card key={el.id} el={el} />)
-        ) : (
-          <p>No search results</p>
-        )}
+      <div className="container">
+        <button onClick={() => this.errorFetch()}>ErrorBoundary</button>
+        <div className="cardList">
+          {pokemons.length > 0 ? (
+            pokemons.map((el) => <Card key={el.id} el={el} />)
+          ) : (
+            <p>No search results</p>
+          )}
+        </div>
       </div>
     );
   }
