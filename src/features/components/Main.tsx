@@ -17,11 +17,13 @@ class Main extends Component<SearchState, State> {
   componentDidMount() {
     this.fetchPokemons();
   }
+
   componentDidUpdate(prevProps: Readonly<SearchState>): void {
     if (prevProps.search !== this.props.search) {
       this.fetchPokemons();
     }
   }
+
   fetchPokemons() {
     this.setState({ loading: true });
     fetchData(
@@ -41,6 +43,7 @@ class Main extends Component<SearchState, State> {
         });
       });
   }
+
   render() {
     const { pokemons, loading, error } = this.state;
     if (error) {

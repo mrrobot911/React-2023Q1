@@ -1,6 +1,7 @@
 import { Search, SearchChange } from '@features/types/state';
 import { Component, createRef } from 'react';
 import '@features/components/Header.css';
+
 class Header extends Component<SearchChange, Search> {
   state: Search = {
     searchValue: localStorage.getItem('searchTerm') || '',
