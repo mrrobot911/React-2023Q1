@@ -13,6 +13,7 @@ class Header extends Component<SearchChange, Search> {
   render() {
     return (
       <div className="header">
+        <h1>Pokemons Database</h1>
         <input
           type="search"
           ref={this.inputRef}

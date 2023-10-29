@@ -4,6 +4,9 @@
   align-items: center;
   justify-content: center;
 }
+.header h1 {
+  margin-right: 40px;
+}
 .header input {
   max-width: 300px;
   margin-right: 20px;
