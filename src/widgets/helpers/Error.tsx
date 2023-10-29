@@ -1,22 +1,23 @@
-import { Component, ReactElement } from 'react';
+import { Component, ErrorInfo, ReactNode } from 'react';
 
-export default class ErrorBoundary extends Component<
-  {
-    children: ReactElement | ReactElement[];
-  },
-  { hasError: boolean }
-> {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
+interface Props {
+  children: ReactNode | ReactNode[];
+}
 
-  static getDerivedStateFromError() {
+interface State {
+  hasError: boolean;
+}
+export default class ErrorBoundary extends Component<Props, State> {
+  public state: State = {
+    hasError: false,
+  };
+
+  static getDerivedStateFromError(): State {
     return { hasError: true };
   }
 
-  componentDidCatch(error, info) {
-    console.log(error, info.componentStack);
+  componentDidCatch(error: Error, info: ErrorInfo) {
+    console.error(error, info.componentStack);
   }
 
   render() {
