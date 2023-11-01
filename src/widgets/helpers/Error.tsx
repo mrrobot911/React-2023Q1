@@ -8,7 +8,7 @@ interface State {
   hasError: boolean;
 }
 export default class ErrorBoundary extends Component<Props, State> {
-  constructor(props: State) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       hasError: false,
@@ -26,6 +26,7 @@ export default class ErrorBoundary extends Component<Props, State> {
   render() {
     const { hasError } = this.state;
     const { children } = this.props;
+
     if (hasError) {
       return <h1>Something went wrong.</h1>;
     }
