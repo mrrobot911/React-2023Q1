@@ -14,7 +14,9 @@ export const fetchData = async (
     );
     const data: FetchData = await response.json();
     setStateList((pre) => ({ ...pre, pokemons: data.data, loading: false }));
-  } catch (error: Error) {
-    setStateList((pre) => ({ ...pre, error, loading: false }));
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      setStateList((pre) => ({ ...pre, error: err as Error, loading: false }));
+    }
   }
 };
