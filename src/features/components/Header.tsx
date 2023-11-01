@@ -1,5 +1,6 @@
 import '@features/components/Header.css';
 import { Dispatch, SetStateAction, useRef, useState } from 'react';
+
 interface props {
   search: string;
   changeSearch: Dispatch<SetStateAction<string>>;
@@ -14,10 +15,11 @@ export default function Header({ search, changeSearch }: props) {
         type="search"
         ref={inputRef}
         value={inputValue}
-        placeholder={'find your pokemon'}
+        placeholder="find your pokemon"
         onChange={(e) => setInputValue(e.target.value)}
       />
       <button
+        type="button"
         onClick={() => {
           localStorage.setItem('searchTerm', inputRef.current?.value || '');
           changeSearch(inputValue);

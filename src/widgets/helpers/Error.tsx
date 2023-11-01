@@ -8,9 +8,12 @@ interface State {
   hasError: boolean;
 }
 export default class ErrorBoundary extends Component<Props, State> {
-  public state: State = {
-    hasError: false,
-  };
+  constructor(props: State) {
+    super(props);
+    this.state = {
+      hasError: false,
+    };
+  }
 
   static getDerivedStateFromError(): State {
     return { hasError: true };
@@ -21,10 +24,11 @@ export default class ErrorBoundary extends Component<Props, State> {
   }
 
   render() {
-    if (this.state.hasError) {
+    const { hasError } = this.state;
+    const { children } = this.props;
+    if (hasError) {
       return <h1>Something went wrong.</h1>;
     }
-
-    return this.props.children;
+    return children;
   }
 }

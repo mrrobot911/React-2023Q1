@@ -1,10 +1,15 @@
-export interface FetchData {
-  data: data[];
-  page: number;
-  pageSize: number;
-  count: number;
-  totalCount: number;
-}
+type attack = {
+  name: string;
+  cost: string[];
+  convertedEnergyCost: number;
+  damage: string;
+  text: string;
+};
+
+type weakness = {
+  type: string;
+  value: string;
+};
 export interface data {
   id: string;
   name: string;
@@ -62,16 +67,10 @@ export interface data {
     };
   };
 }
-
-type attack = {
-  name: string;
-  cost: string[];
-  convertedEnergyCost: number;
-  damage: string;
-  text: string;
-};
-
-type weakness = {
-  type: string;
-  value: string;
-};
+export interface FetchData {
+  data: data[];
+  page: number;
+  pageSize: number;
+  count: number;
+  totalCount: number;
+}

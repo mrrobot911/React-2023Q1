@@ -1,7 +1,7 @@
 import { SearchState, State } from '@features/types/state';
-import { fetchData } from '@shared/api/fetch';
-import Card from '@features/components/Card';
-import Spinner from '@shared/ui/Spinner';
+import fetchData from '@shared/api/fetch';
+import Card from '@features/components/Card.tsx';
+import Spinner from '@shared/ui/Spinner.tsx';
 import '@features/components/Main.css';
 import { useEffect, useState } from 'react';
 

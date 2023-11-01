@@ -1,10 +1,9 @@
-import '@app/App.tsx';
-import Header from '@features/components/Header';
-import Main from '@features/components/Main';
-import ErrorBoundary from '@widgets/helpers/Error';
-import { useState } from 'react';
+import Header from '@features/components/Header.tsx';
+import Main from '@features/components/Main.tsx';
+import ErrorBoundary from '@widgets/helpers/Error.tsx';
+import { ReactElement, useState } from 'react';
 
-export default function App() {
+export default function App(): ReactElement {
   const [search, setSearch] = useState(
     localStorage.getItem('searchTerm') || ''
   );

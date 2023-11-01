@@ -5,6 +5,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'prettier',
     'plugin:prettier/recommended',
+    'airbnb',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -36,8 +37,26 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 'off',
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
+    'react/no-array-index-key': 'off',
+    'react/jsx-filename-extension': [
+      2,
+      { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
+    ],
+    'object-curly-newline': 'off',
   },
   settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+          ['@', './src'],
+          ['@app', './src/app'],
+          ['@features', './src/features'],
+          ['@widgets', './src/widgets'],
+          ['@shared', './src/shared'],
+        ],
+        extensions: ['.ts', '.tsx', '.jsx', '.json'],
+      },
+    },
     react: {
       pragma: 'React',
       version: 'detect',
