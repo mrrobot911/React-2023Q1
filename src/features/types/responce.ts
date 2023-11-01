@@ -1,4 +1,4 @@
-export interface fetchData {
+export interface FetchData {
   data: data[];
   page: number;
   pageSize: number;

@@ -4,9 +4,6 @@ export interface State {
   loading: boolean;
   error: Error | null;
 }
-export interface Search {
-  searchValue: string;
-}
 export interface SearchState {
   search: string;
 }

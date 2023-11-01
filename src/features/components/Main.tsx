@@ -1,84 +1,36 @@
 import { SearchState, State } from '@features/types/state';
 import { fetchData } from '@shared/api/fetch';
-import { Component } from 'react';
 import Card from '@features/components/Card';
 import Spinner from '@shared/ui/Spinner';
 import '@features/components/Main.css';
+import { useEffect, useState } from 'react';
 
-class Main extends Component<SearchState, State> {
-  APIUrl = `https://api.pokemontcg.io/v2/cards/?pageSize=20`;
-
-  state: State = {
+export default function Main({ search }: SearchState) {
+  const [stateList, setStateList] = useState<State>({
     pokemons: [],
     loading: true,
     error: null,
-  };
+  });
 
-  componentDidMount() {
-    this.fetchPokemons();
-  }
+  useEffect(() => {
+    fetchData(search, setStateList);
+  }, [search]);
 
-  componentDidUpdate(prevProps: Readonly<SearchState>): void {
-    if (prevProps.search !== this.props.search) {
-      this.fetchPokemons();
-    }
+  if (stateList.error) {
+    return <p>{stateList.error.message}</p>;
   }
-
-  fetchPokemons() {
-    this.setState({ loading: true });
-    fetchData(
-      this.APIUrl +
-        `${this.props.search ? '&q=name:' + this.props.search + '*' : ''}`
-    )
-      .then((responseData) => {
-        this.setState({
-          pokemons: responseData.data,
-          loading: false,
-        });
-      })
-      .catch((error) => {
-        this.setState({
-          error,
-          loading: false,
-        });
-      });
+  if (stateList.loading) {
+    return <Spinner />;
   }
-  errorFetch() {
-    fetchData(this.APIUrl + `${this.props.search + '&q=name:ф*'}`)
-      .then((responseData) => {
-        this.setState({
-          pokemons: responseData.data,
-          loading: false,
-        });
-      })
-      .catch((error) => {
-        this.setState({
-          error,
-          loading: false,
-        });
-      });
-  }
-
-  render() {
-    const { pokemons, loading, error } = this.state;
-    if (error) {
-      return <p>{error.message}</p>;
-    }
-    if (loading) {
-      return <Spinner />;
-    }
-    return (
-      <div className="container">
-        <button onClick={() => this.errorFetch()}>ErrorBoundary</button>
-        <div className="cardList">
-          {pokemons.length > 0 ? (
-            pokemons.map((el) => <Card key={el.id} el={el} />)
-          ) : (
-            <p>No search results</p>
-          )}
-        </div>
+  return (
+    <div className="container">
+      <div className="cardList">
+        {stateList.pokemons.length > 0 ? (
+          stateList.pokemons.map((el) => <Card key={el.id} props={el} />)
+        ) : (
+          <p>No search results</p>
+        )}
       </div>
-    );
-  }
+    </div>
+  );
 }
-export default Main;
