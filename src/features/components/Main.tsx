@@ -4,14 +4,15 @@ import Card from '@features/components/Card.tsx';
 import Spinner from '@shared/ui/Spinner.tsx';
 import '@features/components/Main.css';
 import { useEffect, useState } from 'react';
+import Pagination from '@features/components/Pagination';
 
 export default function Main({ search }: SearchState) {
   const [stateList, setStateList] = useState<State>({
     pokemons: [],
     loading: true,
     error: null,
+    totalCount: 0,
   });
-
   useEffect(() => {
     fetchData(search, setStateList);
   }, [search]);
@@ -31,6 +32,7 @@ export default function Main({ search }: SearchState) {
           <p>No search results</p>
         )}
       </div>
+      <Pagination totalCount={stateList.totalCount} />
     </div>
   );
 }

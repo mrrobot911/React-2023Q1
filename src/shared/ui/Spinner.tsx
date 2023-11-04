@@ -1,19 +1,17 @@
-import { PureComponent } from 'react';
 import '@shared/ui/Spinner.css';
+import range from '@widgets/helpers/arrayBuild';
 
-export default class Spinner extends PureComponent {
-  array = Array(8).fill(0);
+export default function Spinner() {
+  const array = range(0, 8);
 
-  render() {
-    return (
-      <div className="spinnerBlock">
-        <div className="spinner">
-          {this.array.map((_, i) => (
-            <div key={i} className={`sk-cube sk-cube${i + 1}`} />
-          ))}
-        </div>
-        <p>Loading...</p>
+  return (
+    <div className="spinnerBlock">
+      <div className="spinner">
+        {array.map((_, i) => (
+          <div key={i} className={`sk-cube sk-cube${i + 1}`} />
+        ))}
       </div>
-    );
-  }
+      <p>Loading...</p>
+    </div>
+  );
 }

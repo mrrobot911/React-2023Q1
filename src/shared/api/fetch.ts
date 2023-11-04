@@ -13,7 +13,12 @@ const fetchData = async (
       `${APIUrl}${search ? `&q=name:${search}*` : ''}`
     );
     const data: FetchData = await response.json();
-    setStateList((pre) => ({ ...pre, pokemons: data.data, loading: false }));
+    setStateList((pre) => ({
+      ...pre,
+      pokemons: data.data,
+      loading: false,
+      totalCount: data.totalCount,
+    }));
   } catch (err: unknown) {
     if (err instanceof Error) {
       setStateList((pre) => ({ ...pre, error: err as Error, loading: false }));

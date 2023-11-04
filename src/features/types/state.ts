@@ -5,6 +5,7 @@ export interface State {
   pokemons: data[];
   loading: boolean;
   error: Error | null;
+  totalCount: number;
 }
 export interface SearchState {
   search: string;
