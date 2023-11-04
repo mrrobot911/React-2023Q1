@@ -8,16 +8,15 @@ import Pagination from '@features/components/Pagination';
 import { useSearchParams } from 'react-router-dom';
 
 export default function Main() {
+  const [searchValue] = useSearchParams();
+  const search = searchValue.get('search') || '';
   const [stateList, setStateList] = useState<State>({
     pokemons: [],
     loading: true,
     error: null,
     totalCount: 0,
-    page: 1,
+    page: +(searchValue.get('page') || 1),
   });
-
-  const [searchValue] = useSearchParams();
-  const search = searchValue.get('search') || '';
 
   useEffect(() => {
     fetchData(search, setStateList, stateList.page);

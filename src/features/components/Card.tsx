@@ -24,6 +24,7 @@ export default function Card({ props }: Values) {
             {props.evolvesFrom || 'none'}
           </li>
         </ul>
+        <button type="button">deteil</button>
       </div>
     </div>
   );
