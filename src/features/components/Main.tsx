@@ -36,6 +36,7 @@ export default function Main({ search }: SearchState) {
       <Pagination
         totalCount={stateList.totalCount}
         setStateList={setStateList}
+        page={stateList.page}
       />
     </div>
   );

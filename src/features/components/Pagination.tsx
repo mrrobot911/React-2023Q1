@@ -5,11 +5,13 @@ import { Dispatch, SetStateAction } from 'react';
 interface props {
   totalCount: number;
   setStateList: Dispatch<SetStateAction<State>>;
+  page: number;
 }
-function Pagination({ totalCount, setStateList }: props) {
+function Pagination({ totalCount, setStateList, page }: props) {
   const numbers = range(0, totalCount / 20);
   return (
     <div>
+      <p>{page}</p>
       {numbers.map((_, i) => (
         <button
           type="button"
