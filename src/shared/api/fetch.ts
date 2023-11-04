@@ -5,12 +5,14 @@ import { Dispatch, SetStateAction } from 'react';
 const APIUrl = 'https://api.pokemontcg.io/v2/cards/?pageSize=20';
 const fetchData = async (
   search: string,
-  setStateList: Dispatch<SetStateAction<State>>
+  setStateList: Dispatch<SetStateAction<State>>,
+  page: number
 ) => {
   setStateList((pre) => ({ ...pre, loading: true }));
   try {
     const response = await fetch(
-      `${APIUrl}${search ? `&q=name:${search}*` : ''}`
+      `${APIUrl}${page !== 1 ? `&page=${page}` : ''}
+      ${search ? `&q=name:${search}*` : ''}`
     );
     const data: FetchData = await response.json();
     setStateList((pre) => ({

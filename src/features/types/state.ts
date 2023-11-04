@@ -6,6 +6,7 @@ export interface State {
   loading: boolean;
   error: Error | null;
   totalCount: number;
+  page: number;
 }
 export interface SearchState {
   search: string;

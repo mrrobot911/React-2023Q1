@@ -12,10 +12,11 @@ export default function Main({ search }: SearchState) {
     loading: true,
     error: null,
     totalCount: 0,
+    page: 1,
   });
   useEffect(() => {
-    fetchData(search, setStateList);
-  }, [search]);
+    fetchData(search, setStateList, stateList.page);
+  }, [search, stateList.page]);
 
   if (stateList.error) {
     return <p>{stateList.error.message}</p>;
@@ -32,7 +33,10 @@ export default function Main({ search }: SearchState) {
           <p>No search results</p>
         )}
       </div>
-      <Pagination totalCount={stateList.totalCount} />
+      <Pagination
+        totalCount={stateList.totalCount}
+        setStateList={setStateList}
+      />
     </div>
   );
 }
