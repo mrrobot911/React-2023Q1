@@ -1,30 +1,31 @@
 import '@features/components/Header.css';
-import { Dispatch, SetStateAction, useRef, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
-interface props {
-  search: string;
-  changeSearch: Dispatch<SetStateAction<string>>;
-}
-export default function Header({ search, changeSearch }: props) {
-  const [inputValue, setInputValue] = useState(search);
-  const inputRef = useRef<HTMLInputElement>(null);
+export default function Header() {
+  const [searchValue, setSearchValue] = useSearchParams();
+  const inputString = searchValue.get('search') || '';
+  const [inputValue, setInputValue] = useState(inputString || '');
+
+  const changeInput = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
+
+  const submitInput = () => {
+    setSearchValue({ search: inputValue, page: '1' });
+    localStorage.setItem('searchTerm', inputString || '');
+  };
+
   return (
     <div className="header">
       <h1>Pokemons Database</h1>
       <input
         type="search"
-        ref={inputRef}
         value={inputValue}
         placeholder="find your pokemon"
-        onChange={(e) => setInputValue(e.target.value)}
+        onChange={(e) => changeInput(e)}
       />
-      <button
-        type="button"
-        onClick={() => {
-          localStorage.setItem('searchTerm', inputRef.current?.value || '');
-          changeSearch(inputValue);
-        }}
-      >
+      <button type="button" onClick={() => submitInput()}>
         search
       </button>
     </div>

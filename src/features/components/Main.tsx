@@ -1,12 +1,13 @@
-import { SearchState, State } from '@features/types/state';
+import { State } from '@features/types/state';
 import fetchData from '@shared/api/fetch';
 import Card from '@features/components/Card.tsx';
 import Spinner from '@shared/ui/Spinner.tsx';
 import '@features/components/Main.css';
 import { useEffect, useState } from 'react';
 import Pagination from '@features/components/Pagination';
+import { useSearchParams } from 'react-router-dom';
 
-export default function Main({ search }: SearchState) {
+export default function Main() {
   const [stateList, setStateList] = useState<State>({
     pokemons: [],
     loading: true,
@@ -14,6 +15,10 @@ export default function Main({ search }: SearchState) {
     totalCount: 0,
     page: 1,
   });
+
+  const [searchValue] = useSearchParams();
+  const search = searchValue.get('search') || '';
+
   useEffect(() => {
     fetchData(search, setStateList, stateList.page);
   }, [search, stateList.page]);
@@ -36,7 +41,6 @@ export default function Main({ search }: SearchState) {
       <Pagination
         totalCount={stateList.totalCount}
         setStateList={setStateList}
-        page={stateList.page}
       />
     </div>
   );
