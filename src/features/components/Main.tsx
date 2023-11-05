@@ -41,6 +41,7 @@ export default function Main() {
         <Pagination
           totalCount={stateList.totalCount}
           setStateList={setStateList}
+          page={stateList.page}
         />
       </div>
       <Outlet />
