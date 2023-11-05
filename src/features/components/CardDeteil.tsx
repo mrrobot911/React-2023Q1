@@ -24,7 +24,9 @@ function CardDeteil() {
   };
 
   useEffect(() => {
-    fetchId(deteil, setCard);
+    if (deteil !== '') {
+      fetchId(deteil, setCard);
+    }
   }, [deteil]);
 
   if (Card.error) {
