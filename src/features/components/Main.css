@@ -20,6 +20,13 @@
   min-height: 70vh;
   gap: 20px;
 }
+.navigationContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
 .containerFullScrean {
   width: 100%;
 }

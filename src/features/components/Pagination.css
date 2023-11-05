@@ -1,7 +1,6 @@
 .paginationContainer {
   display: flex;
   gap: 1%;
-  justify-content: center;
   margin: 20px 0px;
 }
 .paginationContainer button {

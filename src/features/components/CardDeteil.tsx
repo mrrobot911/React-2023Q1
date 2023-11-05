@@ -6,13 +6,22 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 function CardDeteil() {
-  const [searchValue] = useSearchParams();
+  const [searchValue, setSearchValue] = useSearchParams();
   const deteil = searchValue.get('detail') || '';
   const [Card, setCard] = useState<CardState>({
     pokemon: null,
     loading: false,
     error: null,
   });
+
+  const deteilsFunc = (id: string) => {
+    const prevId = searchValue.get('detail');
+    setSearchValue({
+      search: searchValue.get('search') || '',
+      page: searchValue.get('page') || '',
+      detail: prevId === id ? '' : id,
+    });
+  };
 
   useEffect(() => {
     fetchId(deteil, setCard);
@@ -36,22 +45,28 @@ function CardDeteil() {
       <div className="deteilString">
         <h2>
           Name:
-          {Card.pokemon?.name}
+          {Card.pokemon?.name || 'none'}
         </h2>
         <p>
           National pokemon name:
-          {Card.pokemon?.nationalPokedexNumbers}
+          {Card.pokemon?.nationalPokedexNumbers || 'none'}
         </p>
-        <ul>
-          Pokemon attack:
-          {Card.pokemon?.attacks.map((el) => (
-            <li key={el.name}>
-              <span>{el.name}</span>
-              <span>{el.damage}</span>
-            </li>
-          ))}
-        </ul>
+        <p>
+          Rarity:
+          {Card.pokemon?.rarity || 'none'}
+        </p>
+        <p>
+          SuperType:
+          {Card.pokemon?.supertype || 'none'}
+        </p>
       </div>
+      <button
+        type="button"
+        className="closeCard"
+        onClick={() => deteilsFunc(deteil)}
+      >
+        X
+      </button>
     </div>
   );
 }
