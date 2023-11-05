@@ -1,9 +1,9 @@
-import { data } from '@features/types/responce';
+import { pokeData } from '@features/types/responce';
 import '@features/components/Card.css';
 import { useSearchParams } from 'react-router-dom';
 
 interface Values {
-  props: data;
+  props: pokeData;
 }
 export default function Card({ props }: Values) {
   const [searchValue, setInputValue] = useSearchParams();

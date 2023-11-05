@@ -2,6 +2,10 @@
     position: fixed;
     right: 0px;
     width: 30%;
+    height: 90%;
+}
+.deteilContainer img {
+    width: 80%;
 }
 .noDeteilContainer {
     display: none;

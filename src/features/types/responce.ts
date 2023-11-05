@@ -10,7 +10,7 @@ type weakness = {
   type: string;
   value: string;
 };
-export interface data {
+export interface pokeData {
   id: string;
   name: string;
   supertype: string;
@@ -68,7 +68,7 @@ export interface data {
   };
 }
 export interface FetchData {
-  data: data[];
+  data: pokeData[];
   page: number;
   pageSize: number;
   count: number;
