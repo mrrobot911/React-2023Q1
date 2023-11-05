@@ -9,7 +9,6 @@ interface props {
 }
 function Pagination({ totalCount, setStateList }: props) {
   const [searchValue, setSearchValue] = useSearchParams();
-  const page = searchValue.get('page');
   const numbers = range(0, totalCount / 20);
 
   const changePage = (i: number) => {
@@ -22,7 +21,6 @@ function Pagination({ totalCount, setStateList }: props) {
 
   return (
     <div>
-      <p>{page}</p>
       {numbers.map((_, i) => (
         <button type="button" key={i} onClick={() => changePage(i)}>
           {i + 1}

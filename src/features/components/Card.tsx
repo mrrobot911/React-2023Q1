@@ -1,5 +1,6 @@
 import { data } from '@features/types/responce';
 import '@features/components/Card.css';
+import { Link } from 'react-router-dom';
 
 interface Values {
   props: data;
@@ -24,7 +25,7 @@ export default function Card({ props }: Values) {
             {props.evolvesFrom || 'none'}
           </li>
         </ul>
-        <button type="button">deteil</button>
+        <Link to={`/${props.id}`}>deteil</Link>
       </div>
     </div>
   );

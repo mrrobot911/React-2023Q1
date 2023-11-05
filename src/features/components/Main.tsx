@@ -5,7 +5,7 @@ import Spinner from '@shared/ui/Spinner.tsx';
 import '@features/components/Main.css';
 import { useEffect, useState } from 'react';
 import Pagination from '@features/components/Pagination';
-import { useSearchParams } from 'react-router-dom';
+import { Outlet, useSearchParams } from 'react-router-dom';
 
 export default function Main() {
   const [searchValue] = useSearchParams();
@@ -29,18 +29,21 @@ export default function Main() {
     return <Spinner />;
   }
   return (
-    <div className="container">
-      <div className="cardList">
-        {stateList.pokemons.length > 0 ? (
-          stateList.pokemons.map((el) => <Card key={el.id} props={el} />)
-        ) : (
-          <p>No search results</p>
-        )}
+    <div className="mainContainer">
+      <div className="container">
+        <div className="cardList">
+          {stateList.pokemons.length > 0 ? (
+            stateList.pokemons.map((el) => <Card key={el.id} props={el} />)
+          ) : (
+            <p>No search results</p>
+          )}
+        </div>
+        <Pagination
+          totalCount={stateList.totalCount}
+          setStateList={setStateList}
+        />
       </div>
-      <Pagination
-        totalCount={stateList.totalCount}
-        setStateList={setStateList}
-      />
+      <Outlet />
     </div>
   );
 }

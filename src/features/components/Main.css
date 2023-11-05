@@ -1,6 +1,12 @@
+.mainContainer {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
 .container {
   display: flex;
   flex-direction: column;
+  width: 70%;
 }
 .container button {
   width: 120px;
