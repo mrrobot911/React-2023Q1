@@ -33,23 +33,25 @@ function CardDeteil() {
   return (
     <div className={deteil ? 'deteilContainer' : 'noDeteilContainer'}>
       <img src={Card.pokemon?.images?.large} alt={Card.pokemon?.name} />
-      <h2>
-        Name:
-        {Card.pokemon?.name}
-      </h2>
-      <p>
-        National pokemon name:
-        {Card.pokemon?.nationalPokedexNumbers}
-      </p>
-      <ul>
-        Pokemon attack:
-        {Card.pokemon?.attacks.map((el) => (
-          <li>
-            <span>{el.name}</span>
-            <span>{el.damage}</span>
-          </li>
-        ))}
-      </ul>
+      <div className="deteilString">
+        <h2>
+          Name:
+          {Card.pokemon?.name}
+        </h2>
+        <p>
+          National pokemon name:
+          {Card.pokemon?.nationalPokedexNumbers}
+        </p>
+        <ul>
+          Pokemon attack:
+          {Card.pokemon?.attacks.map((el) => (
+            <li>
+              <span>{el.name}</span>
+              <span>{el.damage}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
