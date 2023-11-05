@@ -45,7 +45,7 @@ function CardDeteil() {
         <ul>
           Pokemon attack:
           {Card.pokemon?.attacks.map((el) => (
-            <li>
+            <li key={el.name}>
               <span>{el.name}</span>
               <span>{el.damage}</span>
             </li>

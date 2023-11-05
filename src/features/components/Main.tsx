@@ -10,13 +10,17 @@ import { Outlet, useSearchParams } from 'react-router-dom';
 export default function Main() {
   const [searchValue] = useSearchParams();
   const search = searchValue.get('search') || '';
+  const page = +(searchValue.get('page') || 1);
   const [stateList, setStateList] = useState<State>({
     pokemons: [],
     loading: true,
     error: null,
     totalCount: 0,
-    page: +(searchValue.get('page') || 1),
+    page,
   });
+  useEffect(() => {
+    setStateList((pre) => ({ ...pre, page }));
+  }, [page]);
 
   useEffect(() => {
     fetchData(search, setStateList, stateList.page);
