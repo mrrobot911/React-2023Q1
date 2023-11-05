@@ -8,10 +8,11 @@ interface props {
   totalCount: number;
   setStateList: Dispatch<SetStateAction<State>>;
   page: number;
+  cardsInPage: number;
 }
-function Pagination({ totalCount, setStateList, page }: props) {
+function Pagination({ totalCount, setStateList, page, cardsInPage }: props) {
   const [searchValue, setSearchValue] = useSearchParams();
-  const numbers = range(1, Math.ceil(totalCount / 20));
+  const numbers = range(1, Math.ceil(totalCount / cardsInPage));
 
   const changePage = (i: number) => {
     setSearchValue({

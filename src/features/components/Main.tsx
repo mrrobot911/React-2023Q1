@@ -62,6 +62,7 @@ export default function Main() {
             totalCount={stateList.totalCount}
             setStateList={setStateList}
             page={stateList.page}
+            cardsInPage={cardsInPage}
           />
           <label htmlFor="itemsInPage">
             <input className="itemsInPage" ref={inputRef} />
