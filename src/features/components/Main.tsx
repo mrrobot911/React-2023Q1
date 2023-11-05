@@ -30,7 +30,13 @@ export default function Main() {
   }
   return (
     <div className="mainContainer">
-      <div className="container">
+      <div
+        className={
+          searchValue.get('detail')
+            ? 'container'
+            : 'container containerFullScrean'
+        }
+      >
         <div className="cardList">
           {stateList.pokemons.length > 0 ? (
             stateList.pokemons.map((el) => <Card key={el.id} props={el} />)

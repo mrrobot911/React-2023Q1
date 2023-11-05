@@ -2,6 +2,7 @@ import { State } from '@features/types/state';
 import range from '@widgets/helpers/arrayBuild';
 import { Dispatch, SetStateAction } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import '@features/components/Pagination.css';
 
 interface props {
   totalCount: number;
@@ -35,7 +36,7 @@ function Pagination({ totalCount, setStateList, page }: props) {
     }
   };
   return (
-    <div>
+    <div className="paginationContainer">
       <button
         type="button"
         disabled={page === 1}
@@ -52,7 +53,7 @@ function Pagination({ totalCount, setStateList, page }: props) {
             disabled={i === page}
             onClick={() => changePage(i)}
           >
-            {i}
+            <span>{i}</span>
           </button>
         ))}
       <button

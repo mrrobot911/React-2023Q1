@@ -19,3 +19,6 @@
   min-height: 70vh;
   gap: 20px;
 }
+.containerFullScrean {
+  width: 100%;
+}

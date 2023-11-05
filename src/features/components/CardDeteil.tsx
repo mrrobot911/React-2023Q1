@@ -1,7 +1,14 @@
 import '@features/components/CardDeteil.css';
+import { useSearchParams } from 'react-router-dom';
 
 function CardDeteil() {
-  return <div className="deteilContainer">CardDeteil</div>;
+  const [searchValue] = useSearchParams();
+  const deteil = searchValue.get('detail');
+  return (
+    <div className={deteil ? 'deteilContainer' : 'noDeteilContainer'}>
+      {deteil}
+    </div>
+  );
 }
 
 export default CardDeteil;

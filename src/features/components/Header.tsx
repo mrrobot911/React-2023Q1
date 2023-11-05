@@ -12,7 +12,10 @@ export default function Header() {
   };
 
   const submitInput = () => {
-    setSearchValue({ search: inputValue, page: '1' });
+    setSearchValue({
+      search: inputValue,
+      page: '1',
+    });
     localStorage.setItem('searchTerm', inputString || '');
   };
 

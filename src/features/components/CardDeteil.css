@@ -3,3 +3,6 @@
     right: 0px;
     width: 30%;
 }
+.noDeteilContainer {
+    display: none;
+}
