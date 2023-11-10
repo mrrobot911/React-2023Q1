@@ -1,0 +1,32 @@
+.mainContainer {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  transition: all 2s ease-in-out;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+.container button {
+  width: 120px;
+  align-self: center;
+}
+.cardList {
+  margin: 50px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  min-height: 70vh;
+  gap: 20px;
+}
+.navigationContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+.containerFullScrean {
+  width: 100%;
+}

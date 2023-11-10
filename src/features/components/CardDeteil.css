@@ -1,0 +1,32 @@
+.deteilContainer {
+  position: fixed;
+  right: 0px;
+  width: 30%;
+  height: 90%;
+  margin: 10px;
+  background-color: antiquewhite;
+  border-radius: 20px;
+}
+.deteilString {
+  margin-left: 50px;
+}
+.deteilString h2 {
+  margin-bottom: 15px;
+}
+.deteilContainer img {
+  width: 80%;
+  margin: 10px;
+}
+.noDeteilContainer {
+  display: none;
+}
+.closeCard {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rosybrown;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
