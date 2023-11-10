@@ -1,8 +1,8 @@
-import { pokeData } from '@features/types/responce';
+import { PokeData } from '@features/types/responce';
 import { Dispatch, SetStateAction } from 'react';
 
 export interface State {
-  pokemons: pokeData[];
+  pokemons: PokeData[];
   loading: boolean;
   error: Error | null;
   totalCount: number;
@@ -15,7 +15,7 @@ export interface SearchChange extends SearchState {
   changeSearch: Dispatch<SetStateAction<string>>;
 }
 export interface CardState {
-  pokemon: pokeData | null;
+  pokemon: PokeData | null;
   loading: boolean;
   error: Error | null;
 }

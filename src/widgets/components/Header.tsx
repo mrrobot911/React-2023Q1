@@ -1,4 +1,4 @@
-import '@features/components/Header.css';
+import '@widgets/components/Header.css';
 import { ChangeEvent, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
@@ -26,9 +26,9 @@ export default function Header() {
         type="search"
         value={inputValue}
         placeholder="find your pokemon"
-        onChange={(e) => changeInput(e)}
+        onChange={changeInput}
       />
-      <button type="button" onClick={() => submitInput()}>
+      <button type="button" onClick={submitInput}>
         search
       </button>
     </div>

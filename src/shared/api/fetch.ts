@@ -1,4 +1,4 @@
-import { FetchData } from '@features/types/responce.ts';
+import { ResponceData } from '@features/types/responce.ts';
 import { CardState, State } from '@features/types/state.ts';
 import { Dispatch, SetStateAction } from 'react';
 
@@ -15,7 +15,7 @@ const fetchData = async (
       `${APIUrl}?pageSize=${cardsInPage}${page !== 1 ? `&page=${page}` : ''}
       ${search ? `&q=name:${search}*` : ''}`
     );
-    const data: FetchData = await response.json();
+    const data: ResponceData = await response.json();
     setStateList((pre) => ({
       ...pre,
       pokemons: data.data,

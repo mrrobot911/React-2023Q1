@@ -1,11 +1,8 @@
-import { pokeData } from '@features/types/responce';
+import { PokeData } from '@features/types/responce';
 import '@features/components/Card.css';
 import { useSearchParams } from 'react-router-dom';
 
-interface Values {
-  props: pokeData;
-}
-export default function Card({ props }: Values) {
+export default function Card({ pokemon }: { pokemon: PokeData }) {
   const [searchValue, setInputValue] = useSearchParams();
   const deteilsFunc = (id: string) => {
     const prevId = searchValue.get('detail');
@@ -17,25 +14,25 @@ export default function Card({ props }: Values) {
   };
   return (
     <div className="card">
-      <img src={props.images.small} alt={props.name} />
+      <img src={pokemon.images.small} alt={pokemon.name} />
       <div className="cardData">
-        <h3>{props.name}</h3>
+        <h3>{pokemon.name}</h3>
         <div className="cardDeteil">
           <ul>
             <li>
               hp:
-              {props.hp || 'none'}
+              {pokemon.hp || 'none'}
             </li>
             <li>
               rarity:
-              {props.rarity || 'none'}
+              {pokemon.rarity || 'none'}
             </li>
             <li>
               evolves from:
-              {props.evolvesFrom || 'none'}
+              {pokemon.evolvesFrom || 'none'}
             </li>
           </ul>
-          <button type="button" onClick={() => deteilsFunc(props.id)}>
+          <button type="button" onClick={() => deteilsFunc(pokemon.id)}>
             deteil
           </button>
         </div>

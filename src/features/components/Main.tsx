@@ -52,7 +52,7 @@ export default function Main() {
       >
         <div className="cardList">
           {stateList.pokemons.length > 0 ? (
-            stateList.pokemons.map((el) => <Card key={el.id} props={el} />)
+            stateList.pokemons.map((el) => <Card key={el.id} pokemon={el} />)
           ) : (
             <p>No search results</p>
           )}
@@ -67,7 +67,7 @@ export default function Main() {
           <label htmlFor="itemsInPage">
             <input className="itemsInPage" ref={inputRef} />
           </label>
-          <button type="button" onClick={() => inputSubmit()}>
+          <button type="button" onClick={inputSubmit}>
             Change
           </button>
         </div>

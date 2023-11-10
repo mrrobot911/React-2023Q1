@@ -1,16 +1,16 @@
-type attack = {
+interface Attack {
   name: string;
   cost: string[];
   convertedEnergyCost: number;
   damage: string;
   text: string;
-};
+}
 
-type weakness = {
+interface Weakness {
   type: string;
   value: string;
-};
-export interface pokeData {
+}
+export interface PokeData {
   id: string;
   name: string;
   supertype: string;
@@ -19,8 +19,8 @@ export interface pokeData {
   types: string[];
   evolvesFrom: string;
   rules: string[];
-  attacks: attack[];
-  weaknesses: weakness[];
+  attacks: Attack[];
+  weaknesses: Weakness[];
   retreatCost: string[];
   convertedRetreatCost: number;
   set: {
@@ -67,8 +67,8 @@ export interface pokeData {
     };
   };
 }
-export interface FetchData {
-  data: pokeData[];
+export interface ResponceData {
+  data: PokeData[];
   page: number;
   pageSize: number;
   count: number;
